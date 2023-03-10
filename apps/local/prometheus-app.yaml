@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: prometheus-grafana
-  namespace: infra-prometheus
+  namespace: infra-apps
 spec:
   project: default
   source:
     repoURL: https://github.com/antjpar/minikube-dev-env.git
-    path: /infra/prometheus
+    path: infra/prometheus
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
