@@ -1,0 +1,26 @@
+prometheus:
+  server:
+    # Configuring Prometheus to scrape itself and Grafana
+    scrapeInterval: 15s
+    scrapeConfigs:
+      - job_name: "prometheus"
+        static_configs:
+          - targets: ["localhost:9090"]
+      - job_name: "grafana"
+        static_configs:
+          - targets: ["grafana:3000"]
+  alertmanager:
+    # Configuring Alertmanager to send alerts to a webhook receiver
+    receivers:
+      - name: "webhook"
+        webhook_configs:
+          - url: "http://my-webhook-receiver:5000/alert"
+grafana:
+  # Setting admin user and password
+  adminUser: admin
+  adminPassword: admin
+  # Configuring Grafana to use Prometheus as a data source
+  datasources:
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus:9090
