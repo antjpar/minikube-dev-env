@@ -11,7 +11,7 @@ spec:
     targetRevision: main
   destination:
     server: https://kubernetes.default.svc
-    namespace: prometheus-grafana
+    namespace: infra-apps
   syncPolicy:
     automated:
       prune: true
